@@ -1,7 +1,6 @@
 from teacher import PiggyParent
 import sys
 import time
-import 
 
 class Piggy(PiggyParent):
 
