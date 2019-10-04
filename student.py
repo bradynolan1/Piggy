@@ -56,8 +56,8 @@ class Piggy(PiggyParent):
 
     def dance(self): 
         self.cupidshuffle()
-        self.kick()
-        self.turn()
+        #self.kick()
+        #self.turn()
   
     def scan(self):
         """Sweep the servo and populate the scan_data dictionary"""
@@ -73,10 +73,10 @@ class Piggy(PiggyParent):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
-
-    def cupidshuffle(self)
+    
+    def cupidshuffle(self):
         #Make robot move 90 degrees to the right
-        while true:
+        while True:
             self.turn_by_deg(self, 90)
             self.forward(5)
             time.sleep(.25)
@@ -89,10 +89,13 @@ class Piggy(PiggyParent):
 
         #Make robot move 180 degrees to the left
         #Then make robot turn 90 degrees to the right again
-    def kick(self)
+    def kick(self):
         #Make move back and forth quickly
-    def turn(self)
+        pass
+    
+    def turn(self):
         #turn 90 degrees to the left and repeat
+        pass
 
 
 ###########
