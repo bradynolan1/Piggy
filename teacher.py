@@ -95,17 +95,11 @@ class PiggyParent(gopigo3.GoPiGo3):
         self.turn_to_deg(goal)
 
     def turn_to_deg(self, deg):
-
-        # lower - ordered (Batman)
-
-        # EXTRA CREDIT: TURN LEFT IF IT'S MORE EFFICIENT
-
         # while loop - keep turning until my gyro says I'm there
-        while(abs(deg - self.get_heading()) > 5)
+        while abs(deg - self.get_heading()) > 5:
             self.right(primary=60, counter=-60)
         self.stop()
         print("I think I've turned correctly")
-        pass
 
     def fwd(self, left=50, right=50):
         """Blindly charges your robot forward at default power which needs to be configured in child class"""
