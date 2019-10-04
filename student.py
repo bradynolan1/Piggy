@@ -1,5 +1,7 @@
 from teacher import PiggyParent
 import sys
+import time
+import 
 
 class Piggy(PiggyParent):
 
@@ -25,7 +27,7 @@ class Piggy(PiggyParent):
         """Implements the magic numbers defined in constructor"""
         self.set_motor_limits(self.MOTOR_LEFT, self.LEFT_DEFAULT)
         self.set_motor_limits(self.MOTOR_RIGHT, self.RIGHT_DEFAULT)
-        self.set_servo(p.SERVO_1, self.MIDPOINT)
+        self.set_servo(self.SERVO_1, self.MIDPOINT)
         
 
     def menu(self):
@@ -75,6 +77,17 @@ class Piggy(PiggyParent):
 
     def cupidshuffle(self)
         #Make robot move 90 degrees to the right
+        while true:
+            self.turn_by_deg(self, 90)
+            self.forward(5)
+            time.sleep(.25)
+            self.turn_by_deg(self, -180)
+            self.forward(5)
+            time.sleep(.25)
+            self.turn_by_deg(self, 90)
+            self.servo(1000)
+            self.servo(2000)
+
         #Make robot move 180 degrees to the left
         #Then make robot turn 90 degrees to the right again
     def kick(self)
