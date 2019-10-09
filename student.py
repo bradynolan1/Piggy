@@ -78,11 +78,11 @@ class Piggy(PiggyParent):
         #Make robot move 90 degrees to the right
         while True:
             self.turn_by_deg(90)
-            self.fwd()
+            self.fwd(left=50, right= 50)
             time.sleep(1.5)
             self.stop()
             self.turn_by_deg(180)
-            self.fwd()
+            self.fwd(left=50, right= 50)
             time.sleep(1.5)
             self.stop()       
             self.turn_by_deg(90)
