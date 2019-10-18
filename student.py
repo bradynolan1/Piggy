@@ -81,10 +81,12 @@ class Piggy(PiggyParent):
             self.fwd(left=50, right=50)
             time.sleep(1.5)
             self.stop()
+        while True:
             self.turn_by_deg(179)
             self.fwd(left=50, right=50)
             time.sleep(1.5)
-            self.stop()       
+            self.stop()   
+        while True:    
             self.turn_by_deg(90)
             self.servo(1000)
             time.sleep(.25)
@@ -93,7 +95,7 @@ class Piggy(PiggyParent):
         #Make robot move 180 degrees to the left
         #Then make robot turn 90 degrees to the right again
     def kick(self):
-        #Make move back and forth quickly
+        
         pass
 
     def turn(self):
