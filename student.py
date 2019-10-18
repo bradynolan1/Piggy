@@ -82,7 +82,7 @@ class Piggy(PiggyParent):
             time.sleep(1.5)
             self.stop()
         while True:
-            self.turn_by_deg(179)
+            self.left(primary=90, counter=0)
             self.fwd(left=50, right=50)
             time.sleep(1.5)
             self.stop()   
@@ -92,6 +92,16 @@ class Piggy(PiggyParent):
             time.sleep(.25)
             self.servo(2000)
 
+
+    def millyrock(self):
+        while True:
+            self.turn_by_deg(45)
+            self.servo(1000)
+            time.sleep(2)
+            self.stop()
+        while True:
+            self.turn_by_deg()
+        
         #Make robot move 180 degrees to the left
         #Then make robot turn 90 degrees to the right again
     def kick(self):
