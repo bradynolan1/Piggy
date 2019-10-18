@@ -100,7 +100,7 @@ class Piggy(PiggyParent):
             time.sleep(2)
             self.stop()
         while True:
-            self.turn_by_deg()
+            self.turn_by_deg(90)
         
         #Make robot move 180 degrees to the left
         #Then make robot turn 90 degrees to the right again
