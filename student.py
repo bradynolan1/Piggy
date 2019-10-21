@@ -77,17 +77,20 @@ class Piggy(PiggyParent):
     def cupidshuffle(self):
         #Make robot move 90 degrees to the right
         while True:
-            self.turn_by_deg(90)
+            self.turn_by_deg(-90)
+            time.sleep(1)
             self.fwd(left=50, right=50)
             time.sleep(1.5)
             self.stop()
         while True:
-            self.left(primary=90, counter=0)
+            self.turn_by_deg(180)
+            time.sleep(1)
             self.fwd(left=50, right=50)
             time.sleep(1.5)
             self.stop()   
         while True:    
             self.turn_by_deg(90)
+            time.sleep(1)
             self.servo(1000)
             time.sleep(.25)
             self.servo(2000)
