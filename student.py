@@ -55,9 +55,16 @@ class Piggy(PiggyParent):
     '''
 
     def dance(self): 
-        self.cupidshuffle()
-        #self.kick()
-        #self.turn()
+        """A higher-ordered algorithm to make your robot dance"""
+        # check to see it's safe
+        if not self.safe_to_dance():
+            print("Not cool. Not going to dance")
+            return # return closes down the method
+        else:
+            print("It's safe to dance!")
+        for x in range(3):
+            self.cupidshuffle()
+            # call other dance moves
   
     def scan(self):
         """Sweep the servo and populate the scan_data dictionary"""
@@ -115,7 +122,15 @@ class Piggy(PiggyParent):
         #turn 90 degrees to the left and repeat
         pass
 
-
+    def safe_to_dance(self):
+        for x in range(4):
+            for ang in range (1000, 2001, 100):
+                self.servo(ang)
+                time.sleep(.1)
+                if self.read_distance() < 250:
+                    return False
+            self.turn_by_deg(90)
+        return True
 ###########
 ## MAIN APP
 if __name__ == "__main__":  # only run this loop if this is the main file
