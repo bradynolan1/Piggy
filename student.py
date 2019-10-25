@@ -83,19 +83,19 @@ class Piggy(PiggyParent):
     
     def cupidshuffle(self):
         #Make robot move 90 degrees to the right
-        while True:
+        for x in range(1):
             self.turn_by_deg(-90)
             time.sleep(.1)
             self.fwd(left=50, right=50)
             time.sleep(.1)
             self.stop()
-        while True:
+        for x in range(1):
             self.turn_by_deg(180)
             time.sleep(.1)
             self.fwd(left=50, right=50)
             time.sleep(.1)
             self.stop()   
-        while True:    
+        for x in range(1):    
             self.turn_by_deg(90)
             time.sleep(.1)
             self.servo(1000)
@@ -105,12 +105,12 @@ class Piggy(PiggyParent):
 
 
     def millyrock(self):
-        while True:
+        for x in range(2):
             self.turn_by_deg(45)
             self.servo(1000)
             time.sleep(.1)
             self.stop()
-        while True:
+        for x in range(1):
             self.turn_by_deg(90)
             self.right()
             time.sleep(.1)
