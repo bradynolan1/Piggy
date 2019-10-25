@@ -145,15 +145,15 @@ class Piggy(PiggyParent):
     def jaywalk(self):
 	    for x in range(2):
             self.back()
-	        time.sleep(1)
-	        self.turn_by_deg(-30)
-	        time.sleep(1)
-	        self.back()
-	        time.sleep(1)
-	        self.turn_by_deg(60)
-	        time.sleep(1)
-	        self.back()
-	        self.stop()
+            time.sleep(1)
+            self.turn_by_deg(-30)
+            time.sleep(1)
+            self.back()
+            time.sleep(1)
+            self.turn_by_deg(60)
+            time.sleep(1)
+            self.back()
+            self.stop()
 
             
         
