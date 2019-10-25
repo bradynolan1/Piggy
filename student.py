@@ -101,6 +101,7 @@ class Piggy(PiggyParent):
             self.servo(1000)
             time.sleep(.25)
             self.servo(2000)
+            self.stop()
 
 
     def millyrock(self):
