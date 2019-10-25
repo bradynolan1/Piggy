@@ -64,11 +64,12 @@ class Piggy(PiggyParent):
             print("It's safe to dance!")
         for x in range(3):
             self.cupidshuffle()
-            # call other dance moves
-        for x in range(2):
-            self.millyrock()
         for x in range(3):
             self.jaywalk()
+        for x in range(2):
+            self.millyrock()
+        for x in range(1):
+            self.check360()
   
     def scan(self):
         """Sweep the servo and populate the scan_data dictionary"""
@@ -86,7 +87,7 @@ class Piggy(PiggyParent):
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
     
     def cupidshuffle(self):
-        #Make robot move 90 degrees to the right
+        """Does a quick look and moves forward. Then it turns 90 degrees to the right and does the same thing. Lastly, it turns 180 degrees and does the same thing again and then ends at its starting point."""
         for x in range(1):
             self.turn_by_deg(-90)
             time.sleep(.1)
@@ -108,12 +109,8 @@ class Piggy(PiggyParent):
             self.stop()
 
 
-    def millyrock(self):
-        for x in range(2):
-            self.turn_by_deg(45)
-            self.servo(1000)
-            time.sleep(.1)
-            self.stop()
+    def jaywalk(self):
+        """Turns 90 degrees to the right and does a jay walk which repeats 4 times."""
         for x in range(4):
             self.turn_by_deg(90)
             self.right()
@@ -142,7 +139,8 @@ class Piggy(PiggyParent):
             time.sleep(.1)
             self.stop()
 
-    def jaywalk(self):
+    def millyrock(self):
+        """Moves back for a second then turns left 30 degrees and then moves forward for a half of a second. Then, it moves back again and turns right 60 degrees and then moves forward for a half a seond again.  This repeats once. """
         for x in range(2):
             self.back()
             time.sleep(1)
@@ -160,17 +158,13 @@ class Piggy(PiggyParent):
             time.sleep(1)
             self.stop()
 
-            
-        
-        #Make robot move 180 degrees to the left
-        #Then make robot turn 90 degrees to the right again
-    def kick(self):
-        
-        pass
-
-    def turn(self):
-        #turn 90 degrees to the left and repeat
-        pass
+    def check360(self):
+        """Turns right 180 degrees then does a check.  This repeats to make it do an entire 360"""
+        for x in range(2):
+            self.turn_by_deg(180)
+            self.servo(1000)
+            time.sleep(.1)
+            self.stop()
 
     def safe_to_dance(self):
         for x in range(4):
