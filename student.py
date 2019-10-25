@@ -67,6 +67,8 @@ class Piggy(PiggyParent):
             # call other dance moves
         for x in range(2):
             self.millyrock()
+        for x in range(3):
+            self.jaywalk()
   
     def scan(self):
         """Sweep the servo and populate the scan_data dictionary"""
@@ -92,7 +94,7 @@ class Piggy(PiggyParent):
             time.sleep(.1)
             self.stop()
         for x in range(1):
-            self.turn_by_deg(180)
+            self.turn_by_deg(-180)
             time.sleep(.1)
             self.fwd(left=50, right=50)
             time.sleep(.1)
@@ -112,7 +114,7 @@ class Piggy(PiggyParent):
             self.servo(1000)
             time.sleep(.1)
             self.stop()
-        for x in range(1):
+        for x in range(4):
             self.turn_by_deg(90)
             self.right()
             time.sleep(.1)
@@ -130,7 +132,29 @@ class Piggy(PiggyParent):
             time.sleep(.1)
             self.left()
             time.sleep(.1)
+            self.right()
+            time.sleep(.1)
+            self.left()
+            time.sleep(.1)
+            self.right()
+            time.sleep(.1)
+            self.left()
+            time.sleep(.1)
             self.stop()
+
+    def jaywalk(self):
+	    for x in range(2):
+            self.back()
+	        time.sleep(1)
+	        self.turn_by_deg(-30)
+	        time.sleep(1)
+	        self.back()
+	        time.sleep(1)
+	        self.turn_by_deg(60)
+	        time.sleep(1)
+	        self.back()
+	        self.stop()
+
             
         
         #Make robot move 180 degrees to the left
