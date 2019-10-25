@@ -65,6 +65,8 @@ class Piggy(PiggyParent):
         for x in range(3):
             self.cupidshuffle()
             # call other dance moves
+        for x in range(2):
+            self.millyrock()
   
     def scan(self):
         """Sweep the servo and populate the scan_data dictionary"""
