@@ -143,7 +143,7 @@ class Piggy(PiggyParent):
             self.stop()
 
     def jaywalk(self):
-	    for x in range(2):
+        for x in range(2):
             self.back()
             time.sleep(1)
             self.turn_by_deg(-30)
