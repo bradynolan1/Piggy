@@ -79,6 +79,22 @@ class Piggy(PiggyParent):
 
     def obstacle_count(self):
         print("I can't count how many obstacles are around me. Please give my programmer a zero.")
+        """Does a 360 scan and returns the number of obstacles it sees"""
+        found_something = False # trigger
+        trigger_distance = 250
+        count = 0
+        starting_position = self.get_heading()
+        self.right(primary=60, counter=-60)
+        while self.get_heading() != starting_position:
+            if self.read_distance() < 250 and not found_something:
+                found_something = True
+                count += 1
+            elif self.read_distance() > 250 and found_something:
+                found_something = False
+                print("I have a clear view. Resetting my counter")
+        self.stop()
+        print("I found this many things: %d" % count)
+        return count
 
     def nav(self):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
@@ -195,21 +211,3 @@ if __name__ == "__main__":  # only run this loop if this is the main file
 
     except KeyboardInterrupt: # except the program gets interrupted by Ctrl+C on the keyboard.
         p.quit()  
-
-    def obstacle_count(self):
-        """Does a 360 scan and returns the number of obstacles it sees"""
-        found_something = False # trigger
-        trigger_distance = 250
-        count = 0
-        starting_position = self.get_heading()
-        self.right(primary=60, counter=-60)
-        while self.get_heading() != starting_position:
-            if self.read_distance() < 250 and not found_something:
-                found_something = True
-                count += 1
-            elif self.read_distance() > 250 and found_something:
-                found_something = False
-                print("I have a clear view. Resetting my counter")
-        self.stop()
-        print("I found this many things: %d" % count)
-        return count
