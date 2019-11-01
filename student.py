@@ -108,6 +108,22 @@ class Piggy(PiggyParent):
                 time.sleep(0.1)
             self.turn_by_deg(45)
     
+    def checkdirection(self):
+        self.servo(1000)
+        time.sleep(.1)
+        r = self.read_distance()
+        self.servo(2000)
+        time.sleep(.1)
+        l = self.read_distance()
+        if l > r:
+            self.turn_by_deg(-90)
+        if l < r:
+            self.turn_by_deg(90)
+
+
+
+
+
     def cupidshuffle(self):
         """Does a quick look and moves forward. Then it turns 90 degrees to the right and does the same thing. Lastly, it turns 180 degrees and does the same thing again and then ends at its starting point."""
         for x in range(1):
