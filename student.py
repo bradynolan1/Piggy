@@ -102,10 +102,11 @@ class Piggy(PiggyParent):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
-        while self.read_distance() > 250:
-            self.fwd()
-            time.sleep(0.1)
-        self.stop
+        while True:
+            while self.read_distance() > 100:
+                self.fwd()
+                time.sleep(0.1)
+            self.turn_by_deg(45)
     
     def cupidshuffle(self):
         """Does a quick look and moves forward. Then it turns 90 degrees to the right and does the same thing. Lastly, it turns 180 degrees and does the same thing again and then ends at its starting point."""
