@@ -102,12 +102,17 @@ class Piggy(PiggyParent):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
+        corner_count = 0
         while True:    
             while self.read_distance() > 250:
+                corner_count = 0
                 self.fwd()
                 time.sleep(.01)
             self.stop()
-            self.scan()            
+            self.scan()
+            corner_count += 1
+            if corner_count > 3:
+                self.turn_by_deg(180)            
             #traversal
             left_total = 0
             left_count = 0
