@@ -97,7 +97,7 @@ class Piggy(PiggyParent):
         print("I found this many things: %d" % count)
         return count
 
-    def quick_check(self)
+    def quick_check(self):
         # three quick checks
         for ang in range(self.MIDPOINT-150. self.MIDPOINT+151, 150):
             self.servo(ang)
