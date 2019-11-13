@@ -97,19 +97,26 @@ class Piggy(PiggyParent):
         print("I found this many things: %d" % count)
         return count
 
+    def quick_check(self)
+        # three quick checks
+        for ang in range(self.MIDPOINT-150. self.MIDPOINT+151, 150):
+            self.servo(ang)
+            if self.read_distance() < self.SAFE_DIST:
+                return False
+        return True
+
+
     def nav(self):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
-        corner_count = 0
-        while True:    
-            while self.read_distance() > 350:
-                corner_count = 0
+        while True:
+            self.servo(self.MIDPOINT)
+            while self.quick_check():
                 self.fwd()
                 time.sleep(.01)
-            self.stop()
-            self.scan()
+            self.stop()    
             corner_count += 1
             if corner_count > 3:
                 self.turn_by_deg(180)            
