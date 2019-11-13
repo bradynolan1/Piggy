@@ -19,6 +19,7 @@ class Piggy(PiggyParent):
         self.LEFT_DEFAULT = 80
         self.RIGHT_DEFAULT = 80
         self.MIDPOINT = 1500  # what servo command (1000-2000) is straight forward for your bot?
+        self.SAFE_DISTANCE = 350
         self.load_defaults()
         
 
@@ -87,10 +88,10 @@ class Piggy(PiggyParent):
         self.right(primary=60, counter=-60)
         time.sleep(3)
         while abs(self.get_heading() - starting_position) <= 1:
-            if self.read_distance() < 250 and not found_something:
+            if self.read_distance() < 350 and not found_something:
                 found_something = True
                 count += 1
-            elif self.read_distance() > 250 and found_something:
+            elif self.read_distance() > 350 and found_something:
                 found_something = False
                 print("I have a clear view. Resetting my counter")
         self.stop()
