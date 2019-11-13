@@ -81,7 +81,7 @@ class Piggy(PiggyParent):
         print("I can't count how many obstacles are around me. Please give my programmer a zero.")
         """Does a 360 scan and returns the number of obstacles it sees"""
         found_something = False # trigger
-        trigger_distance = 250
+        trigger_distance = 350
         count = 0
         starting_position = self.get_heading()
         self.right(primary=60, counter=-60)
@@ -104,7 +104,7 @@ class Piggy(PiggyParent):
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
         corner_count = 0
         while True:    
-            while self.read_distance() > 250:
+            while self.read_distance() > 350:
                 corner_count = 0
                 self.fwd()
                 time.sleep(.01)
