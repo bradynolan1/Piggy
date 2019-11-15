@@ -101,7 +101,7 @@ class Piggy(PiggyParent):
         # three quick checks
         for ang in range(self.MIDPOINT-250, self.MIDPOINT+251, 250):
             self.servo(ang)
-            if self.read_distance() < 350:
+            if self.read_distance() < 200:
                 return False
         return True
         
