@@ -19,7 +19,6 @@ class Piggy(PiggyParent):
         self.LEFT_DEFAULT = 80
         self.RIGHT_DEFAULT = 80
         self.MIDPOINT = 1500  # what servo command (1000-2000) is straight forward for your bot?
-        self.SAFE_DISTANCE = 350
         self.load_defaults()
         
 
@@ -98,11 +97,11 @@ class Piggy(PiggyParent):
         print("I found this many things: %d" % count)
         return count
 
-    def quick_check(self):
+    def quick_check(self)
         # three quick checks
-        for ang in range(self.MIDPOINT-150, self.MIDPOINT+151, 150):
+        for ang in range(self.MIDPOINT-150. self.MIDPOINT+151, 150):
             self.servo(ang)
-            if self.read_distance() < self.SAFE_DIST:
+            if self.read_distance() < self.SAFE_DIST():
                 return False
         return True
 
@@ -112,12 +111,14 @@ class Piggy(PiggyParent):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
-        while True:
-            self.servo(self.MIDPOINT)
-            while self.quick_check():
+        corner_count = 0
+        while True:    
+            while self.read_distance() > 350:
+                corner_count = 0
                 self.fwd()
                 time.sleep(.01)
-            self.stop()    
+            self.stop()
+            self.scan()
             corner_count += 1
             if corner_count > 3:
                 self.turn_by_deg(180)            
