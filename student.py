@@ -99,10 +99,11 @@ class Piggy(PiggyParent):
 
     def quick_check(self):
         # three quick checks
-        for ang in range(self.MIDPOINT-150, self.MIDPOINT+151, 150):
+        for ang in range(self.MIDPOINT-250, self.MIDPOINT+251, 250):
             self.servo(ang)
             if self.read_distance() < 350:
                 return False
+        return True
         
 
 
