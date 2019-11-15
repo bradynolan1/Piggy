@@ -119,7 +119,6 @@ class Piggy(PiggyParent):
                 corner_count = 0
                 self.fwd()
                 time.sleep(.01)
-            self.stop()
         
         while True:   
             while self.read_distance() > 350:
