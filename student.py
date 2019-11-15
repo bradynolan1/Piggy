@@ -103,7 +103,7 @@ class Piggy(PiggyParent):
             self.servo(ang)
             if self.read_distance() < 350:
                 return False
-        return True
+        
 
 
     def nav(self):
@@ -112,7 +112,16 @@ class Piggy(PiggyParent):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
         corner_count = 0
-        while True:    
+        
+        while True:
+            self.servo(self.MIDPOINT)
+            while self.quick_check():
+                corner_count = 0
+                self.fwd()
+                time.sleep(.01)
+            self.stop()
+        
+        while True:   
             while self.read_distance() > 350:
                 corner_count = 0
                 self.fwd()
