@@ -2,6 +2,8 @@ from teacher import PiggyParent
 import sys
 import time
 
+
+
 class Piggy(PiggyParent):
 
     '''
@@ -16,10 +18,12 @@ class Piggy(PiggyParent):
         ''' 
         MAGIC NUMBERS <-- where we hard-code our settings
         '''
+        self.starting_position = 0
         self.LEFT_DEFAULT = 80
         self.RIGHT_DEFAULT = 80
         self.MIDPOINT = 1500  # what servo command (1000-2000) is straight forward for your bot?
         self.load_defaults()
+
         
 
     def load_defaults(self):
@@ -113,7 +117,8 @@ class Piggy(PiggyParent):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
         corner_count = 0
-        
+        self.starting_position = self.get_heading()
+
         while True:
             self.servo(self.MIDPOINT)
             while self.quick_check():
@@ -124,7 +129,9 @@ class Piggy(PiggyParent):
             self.scan()
             corner_count += 1
             if corner_count > 3:
-                self.turn_by_deg(180)            
+                self.turn_by_deg(180) 
+                self.deg_fwd(720)
+                self.turn_to_deg(self.starting_position)           
             #traversal
             left_total = 0
             left_count = 0
