@@ -118,7 +118,6 @@ class Piggy(PiggyParent):
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
         corner_count = 0
         self.starting_position = self.get_heading()
-
         while True:
             self.servo(self.MIDPOINT)
             while self.quick_check():
@@ -131,7 +130,7 @@ class Piggy(PiggyParent):
             if corner_count > 3:
                 self.turn_by_deg(180) 
                 self.deg_fwd(720)
-                self.turn_to_deg(self.starting_position)           
+                self.turn_to_deg(self.starting_position)          
             #traversal
             left_total = 0
             left_count = 0
