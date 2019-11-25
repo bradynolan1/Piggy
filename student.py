@@ -130,8 +130,8 @@ class Piggy(PiggyParent):
             if corner_count > 3:
                 self.turn_by_deg(180)
             self.stop()
-                self.deg_fwd(720)
-                self.turn_to_deg(self.starting_position)          
+            self.deg_fwd(720)
+            self.turn_to_deg(self.starting_position)          
             #traversal
             left_total = 0
             left_count = 0
