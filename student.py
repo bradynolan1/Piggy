@@ -128,7 +128,8 @@ class Piggy(PiggyParent):
             self.scan()
             corner_count += 1
             if corner_count > 3:
-                self.turn_by_deg(180) 
+                self.turn_by_deg(180)
+            self.stop()
                 self.deg_fwd(720)
                 self.turn_to_deg(self.starting_position)          
             #traversal
