@@ -28,9 +28,9 @@ class Piggy(PiggyParent):
     def getout(self):
         # This commands robot to move away from corner
         self.turn_by_deg(180)   
-        self.deg_fwd()
+        self.deg_fwd(1080)
         time.sleep(2)
-        
+
 
     def load_defaults(self):
         """Implements the magic numbers defined in constructor"""
@@ -83,7 +83,7 @@ class Piggy(PiggyParent):
   
     def scan(self):
         """Sweep the servo and populate the scan_data dictionary"""
-        for angle in range(self.MIDPOINT-350, self.MIDPOINT+350, 250):
+        for angle in range(self.MIDPOINT-350, self.MIDPOINT+350, 50):
             self.servo(angle)
             self.scan_data[angle] = self.read_distance()
 
@@ -122,7 +122,7 @@ class Piggy(PiggyParent):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
-        corner_count = 0
+        self.corner_count = 0
         self.starting_position = self.get_heading()
         while True:
             self.servo(self.MIDPOINT)
@@ -133,14 +133,13 @@ class Piggy(PiggyParent):
             self.stop()
             self.corner_count += 1
             if self.corner_count == 4:
-                self.getout()
-            self.scan()    
-            self.turn_to_deg(self.starting_position)          
+                self.getout()          
             #traversal
             left_total = 0
             left_count = 0
             right_total = 0
             right_count = 0
+            self.scan()
             for ang, dist in self.scan_data.items():
                 if ang < self.MIDPOINT: 
                     right_total += dist
