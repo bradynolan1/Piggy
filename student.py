@@ -28,7 +28,9 @@ class Piggy(PiggyParent):
     def getout(self):
         # This commands robot to move away from corner
         self.turn_by_deg(180)   
-        self.deg_fwd(720)
+        self.deg_fwd()
+        time.sleep(2)
+        
 
     def load_defaults(self):
         """Implements the magic numbers defined in constructor"""
