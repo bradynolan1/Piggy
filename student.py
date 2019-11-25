@@ -129,7 +129,7 @@ class Piggy(PiggyParent):
                 self.fwd()
                 time.sleep(.01)
             self.stop()
-            self.cornercount += 1
+            self.corner_count += 1
             if self.corner_count == 4:
                 self.getout()
             self.scan()    
