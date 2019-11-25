@@ -20,11 +20,15 @@ class Piggy(PiggyParent):
         '''
         self.starting_position = 0
         self.LEFT_DEFAULT = 80
-        self.RIGHT_DEFAULT = 80
+        self.RIGHT_DEFAULT = 85
         self.MIDPOINT = 1500  # what servo command (1000-2000) is straight forward for your bot?
         self.load_defaults()
+        self.SAFE_Distance = 250
 
-        
+    def getout(self):
+        # This commands robot to move away from corner
+        self.turn_by_deg(180)   
+        self.deg_fwd(720)
 
     def load_defaults(self):
         """Implements the magic numbers defined in constructor"""
@@ -91,10 +95,10 @@ class Piggy(PiggyParent):
         self.right(primary=60, counter=-60)
         time.sleep(3)
         while abs(self.get_heading() - starting_position) <= 1:
-            if self.read_distance() < 350 and not found_something:
+            if self.read_distance() < 400 and not found_something:
                 found_something = True
                 count += 1
-            elif self.read_distance() > 350 and found_something:
+            elif self.read_distance() > 400 and found_something:
                 found_something = False
                 print("I have a clear view. Resetting my counter")
         self.stop()
@@ -121,17 +125,15 @@ class Piggy(PiggyParent):
         while True:
             self.servo(self.MIDPOINT)
             while self.quick_check():
-                corner_count = 0
+                self.corner_count = 0
                 self.fwd()
                 time.sleep(.01)
             self.stop()
-            self.scan()
-            corner_count += 1
-            if corner_count > 3:
-                self.turn_by_deg(180)
-            self.stop()
-            self.deg_fwd(720)
-            self.turn_to_deg(self.starting_position)          
+            self.cornercount += 1
+            if self.corner_count == 4:
+                self.getout()
+            self.scan()    
+            self.turn_to_deg(self.get_heading)          
             #traversal
             left_total = 0
             left_count = 0
