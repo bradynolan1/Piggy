@@ -133,7 +133,8 @@ class Piggy(PiggyParent):
             self.stop()
             self.corner_count += 1
             if self.corner_count == 4:
-                self.getout()          
+                self.check360()
+                self.checkdirection()         
             #traversal
             left_total = 0
             left_count = 0
