@@ -19,13 +19,15 @@ class Piggy(PiggyParent):
         MAGIC NUMBERS <-- where we hard-code our settings
         '''
         self.starting_position = 0
-        self.LEFT_DEFAULT = 80
-        self.RIGHT_DEFAULT = 85
+        self.LEFT_DEFAULT = 90
+        self.RIGHT_DEFAULT = 90
         self.MIDPOINT = 1500  # what servo command (1000-2000) is straight forward for your bot?
         self.load_defaults()
         self.SAFE_Distance = 250
 
     def getout(self):
+        starting_postion = 0
+        starting_position = self.getout
         # This commands robot to move away from corner and favor starting position
         self.turn_by_deg(180)
         self.deg_fwd(720)
@@ -134,7 +136,7 @@ class Piggy(PiggyParent):
             self.stop()
             self.corner_count += 1
             if self.corner_count == 4:
-                        
+                self.turn_to_deg(self.getout)
             #traversal
             left_total = 0
             left_count = 0
