@@ -26,10 +26,11 @@ class Piggy(PiggyParent):
         self.SAFE_Distance = 250
 
     def getout(self):
-        # This commands robot to move away from corner
-        self.turn_by_deg(180)   
-        self.deg_fwd(1080)
-        time.sleep(2)
+        # This commands robot to move away from corner and favor starting position
+        self.turn_by_deg(180)
+        self.deg_fwd(720)
+        self.turn_to_deg(self.get_heading)
+        
 
 
     def load_defaults(self):
@@ -133,8 +134,7 @@ class Piggy(PiggyParent):
             self.stop()
             self.corner_count += 1
             if self.corner_count == 4:
-                self.check360()
-                self.checkdirection()         
+                        
             #traversal
             left_total = 0
             left_count = 0
