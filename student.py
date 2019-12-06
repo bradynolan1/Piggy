@@ -83,7 +83,7 @@ class Piggy(PiggyParent):
   
     def scan(self):
         """Sweep the servo and populate the scan_data dictionary"""
-        for angle in range(self.MIDPOINT-350, self.MIDPOINT+350, 50):
+        for angle in range(self.MIDPOINT-350, self.MIDPOINT+350, 150):
             self.servo(angle)
             self.scan_data[angle] = self.read_distance()
 
@@ -97,10 +97,10 @@ class Piggy(PiggyParent):
         self.right(primary=60, counter=-60)
         time.sleep(3)
         while abs(self.get_heading() - starting_position) <= 1:
-            if self.read_distance() < 400 and not found_something:
+            if self.read_distance() < 35 and not found_something:
                 found_something = True
                 count += 1
-            elif self.read_distance() > 400 and found_something:
+            elif self.read_distance() > 350 and found_something:
                 found_something = False
                 print("I have a clear view. Resetting my counter")
         self.stop()
@@ -123,7 +123,7 @@ class Piggy(PiggyParent):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
         self.corner_count = 0
-        self.starting_position = self.get_heading()
+        starting_position = self.get_heading()
         while True:
             self.servo(self.MIDPOINT)
             while self.quick_check():
