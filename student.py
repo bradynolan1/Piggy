@@ -18,6 +18,7 @@ class Piggy(PiggyParent):
         MAGIC NUMBERS <-- where we hard-code our settings
         '''
         self.starting_position = 0
+        self.start_time = 0
         self.LEFT_DEFAULT = 90
         self.RIGHT_DEFAULT = 90
         self.MIDPOINT = 1500  # what servo command (1000-2000) is straight forward for your bot?
@@ -99,7 +100,7 @@ class Piggy(PiggyParent):
         self.right(primary=60, counter=-60)
         time.sleep(3)
         while abs(self.get_heading() - starting_position) <= 1:
-            if self.read_distance() < 35 and not found_something:
+            if self.read_distance() < 350 and not found_something:
                 found_something = True
                 count += 1
             elif self.read_distance() > 350 and found_something:
@@ -125,7 +126,11 @@ class Piggy(PiggyParent):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
         self.corner_count = 0
-        starting_position = self.get_heading()
+        self.starting_position = self.get_heading()
+        self.starting_time = time.now()
+        time.now() - self.starting_time
+        if time.now() - self.starting_time > 60
+        self.turn_to_deg(self.starting_position)
         while True:
             self.servo(self.MIDPOINT)
             while self.quick_check():
@@ -137,7 +142,7 @@ class Piggy(PiggyParent):
             if self.corner_count >= 4:
                 current_heading = self.get_heading()
                 # check if there's a path toward the exit
-                self.turn_to_deg(starting_position)
+                self.turn_to_deg(self.starting_position)
                 # but if that's not clear, face the opposite as I was when I started this mess
                 if not self.quick_check():
                     self.turn_to_deg(current_heading + 180)
@@ -163,7 +168,7 @@ class Piggy(PiggyParent):
                     self.turn_by_deg(45)
                 
     def focusonfinish(self):
-        if elapsed_time(60)
+        
         self.turn_to_deg(starting_position)
 
     
