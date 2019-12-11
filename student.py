@@ -3,7 +3,6 @@ import sys
 import time
 
 
-
 class Piggy(PiggyParent):
 
     '''
@@ -162,6 +161,10 @@ class Piggy(PiggyParent):
                     self.turn_by_deg(-45)
                 else:
                     self.turn_by_deg(45)
+                
+    def focusonfinish(self):
+        if elapsed_time(60)
+        self.turn_to_deg(starting_position)
 
     
     def checkdirection(self):
