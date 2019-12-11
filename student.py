@@ -127,10 +127,6 @@ class Piggy(PiggyParent):
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
         self.corner_count = 0
         self.starting_position = self.get_heading()
-        self.starting_time = time.now()
-        time.now() - self.starting_time
-        if time.now() - self.starting_time > 60
-        self.turn_to_deg(self.starting_position)
         while True:
             self.servo(self.MIDPOINT)
             while self.quick_check():
