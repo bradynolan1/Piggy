@@ -179,12 +179,16 @@ class Piggy(PiggyParent):
                     self.turn_by_deg(-45)
                 else:
                     self.turn_by_deg(45)
-        while True:
-            time.sleep(2)
-            not self.get_heading
-            self.turn_to_deg(self.get_heading)
 
-                
+    def path_towards_exit(self):
+        self.exit_heading = self.get_heading() 
+        self.turn_to_deg(self.exit_heading)
+        if self.quick_check():
+            return True
+        else:
+            self.turn_to_deg(self.get_heading)
+        return False
+
     
     def checkdirection(self):
         self.servo(1000)
