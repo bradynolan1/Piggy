@@ -133,6 +133,8 @@ class Piggy(PiggyParent):
                 self.stop()
                 print("I made it back!")
 
+            
+
 
 
     def nav(self):
@@ -177,6 +179,11 @@ class Piggy(PiggyParent):
                     self.turn_by_deg(-45)
                 else:
                     self.turn_by_deg(45)
+        while True:
+            time.sleep(2)
+            not self.get_heading
+            self.turn_to_deg(self.get_heading)
+
                 
     
     def checkdirection(self):
