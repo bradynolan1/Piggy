@@ -52,6 +52,7 @@ class Piggy(PiggyParent):
                 "o": ("Obstacle count", self.obstacle_count),
                 "c": ("Calibrate", self.calibrate),
                 "q": ("Quit", self.quit)
+                "h": ("Return to start", self.get_heading)
                 }
         # loop and print the menu...
         for key in sorted(menu.keys()):
@@ -90,6 +91,8 @@ class Piggy(PiggyParent):
             self.servo(angle)
             self.scan_data[angle] = self.read_distance()
 
+
+    
     def obstacle_count(self):
         print("I can't count how many obstacles are around me. Please give my programmer a zero.")
         """Does a 360 scan and returns the number of obstacles it sees"""
@@ -117,7 +120,17 @@ class Piggy(PiggyParent):
             if self.read_distance() < 200:
                 return False
         return True
-        
+
+    
+    def ret_to_st(self)"
+        print("------! Return ACTIVATED ! ------\n")
+        self.starting_position = self.get_heading()
+        while True:
+            if not self.get_heading()
+                self.turn_to_deg(self.starting_position)
+            else: 
+        return True
+
 
 
     def nav(self):
@@ -163,10 +176,6 @@ class Piggy(PiggyParent):
                 else:
                     self.turn_by_deg(45)
                 
-    def focusonfinish(self):
-        
-        self.turn_to_deg(starting_position)
-
     
     def checkdirection(self):
         self.servo(1000)
