@@ -52,7 +52,7 @@ class Piggy(PiggyParent):
                 "o": ("Obstacle count", self.obstacle_count),
                 "c": ("Calibrate", self.calibrate),
                 "q": ("Quit", self.quit)
-                "h": ("Return to start", self.get_heading)
+                "h": ("Return to start", self.ret_to_st)
                 }
         # loop and print the menu...
         for key in sorted(menu.keys()):
@@ -123,9 +123,12 @@ class Piggy(PiggyParent):
 
     
     def ret_to_st(self)"
-        print("------! Return ACTIVATED ! ------\n")
+        print("------! Return to start ! ------\n")
         self.starting_position = self.get_heading()
+        
         while True:
+            time.sleep(.1)
+            new_ang = self.get_heading()
             if not self.get_heading()
                 self.turn_to_deg(self.starting_position)
             else: 
