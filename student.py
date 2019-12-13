@@ -122,17 +122,16 @@ class Piggy(PiggyParent):
         return True
 
     
-    def ret_to_st(self)"
-        print("------! Return to start ! ------\n")
-        self.starting_position = self.get_heading()
-        
+
+    def ret_to_st(self):
+        starting_position = self.get_heading()
         while True:
             time.sleep(.1)
             new_ang = self.get_heading()
-            if not self.get_heading()
-                self.turn_to_deg(self.starting_position)
-            else: 
-        return True
+            if abs(starting_position-new_ang) > 20:
+                self.turn_to_deg(starting_position)
+                self.stop()
+                print("I made it back!")
 
 
 
