@@ -180,6 +180,51 @@ class Piggy(PiggyParent):
                 else:
                     self.turn_by_deg(45)
 
+
+
+    def slither(self):
+        pass
+        """ practice a smooth veer """
+        #
+        starting_direction = self.get_heading()
+        # start driving forward
+        self.set_motor_power(self.MOTOR_LEFT, self.LEFT_DEFAULT)
+        self.set_motor_power(self.MOTOR_RIGHT, self.RIGHT_DEFAULT)
+        self.fwd()
+        #throttle down the left motor
+        for power in range(self.LEFT_DEFAULT, 30, -10):
+            self.set_motor_power(self.MOTOR_LEFT,power)
+            time.sleep(.5)
+        #throttle up the left 
+        for power in range(30, self.LEFT_DEFAULT + 1, 10):
+            self.set_motor_power(self.MOTOR_LEFT, power)
+            time.sleep(.1)
+        # throttle down the right
+        for power in range(self.RIGHT_DEFAULT, 30, -10):
+            self.set_motor_power(self.MOTOR_RIGHT, power)
+            time.sleep(.5)
+        
+        # throttle up the right 
+        for power in range(30, self.RIGHT_DEFAULT + 1, 10):
+            self.set_motor_power(self.MOTOR_RIGHT, power)
+            time.sleep(.1) 
+        
+        left_speed = self.LEFT_DEFAULT
+        right_speed = self.RIGHT_DEFAULT
+        
+
+        while self.get_heading() !=starting_direction:
+
+            if self.get_heading() < starting_direction:
+                right_speed -= 10
+
+            elif self.get_heading() > starting_direction:
+                left_speed -= 10
+        
+            self.set_motor_power(self.MOTOR_LEFT, self.left_speed)
+            self.set_motor_power(self.MOTOR_RIGHT, self.right_speed)
+
+
     def path_towards_exit(self):
         self.exit_heading = self.get_heading() 
         self.turn_to_deg(self.exit_heading)
