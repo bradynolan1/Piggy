@@ -213,7 +213,7 @@ class Piggy(PiggyParent):
         left_speed = self.LEFT_DEFAULT
         right_speed = self.RIGHT_DEFAULT
         
-
+        self.turn_to_deg(self.get_heading)
         while self.get_heading() !=starting_direction:
 
             if self.get_heading() < starting_direction:
